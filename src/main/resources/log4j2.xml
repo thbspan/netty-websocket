@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration type="off" monitorInterval="30">
+
+    <Appenders>
+        <Console name="console">
+            <PatternLayout pattern="%d [%t] %highlight{%-5p} [%c:%M:%L] %X{sessionId} %X{loginName} %X{bankType} - %m%n"/>
+        </Console>
+
+        <RollingFile name="app" fileName="logs/app.log" filePattern="logs/app-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="%d [%t] %-5p [%c:%M:%L] %X{sessionId} %X{loginName} %X{bankType} - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100MB"/>
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <loggers>
+        <Root level="info" includeLocation="true">
+            <appender-ref ref="console"/>
+        </Root>
+    </loggers>
+</configuration>
